@@ -15,7 +15,7 @@ process.env.PUBLIC = app.isPackaged ? process.env.DIST : join(process.env.DIST_E
 import { app, BrowserWindow, shell, ipcMain } from "electron";
 import { release } from "os";
 import { join } from "path";
-import "#/ipc";
+import "#/controller";
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith("6.1")) app.disableHardwareAcceleration();

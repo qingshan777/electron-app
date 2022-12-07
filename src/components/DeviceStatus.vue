@@ -1,10 +1,13 @@
 <template>
-  <div class="absolute bottom-0 left-0 flex h-10 w-full items-center justify-between bg-white px-4">
-    <div class="">
-      <a-button>柜内物品查询</a-button>
+  <div class="absolute bottom-0 left-0 flex h-10 w-full items-center justify-between bg-black bg-opacity-30 px-4">
+    <div class="flex h-full items-center text-xl text-white">
+      <span>柜门名称：1，</span>
+      <span>文件总数：0，</span>
+      <span>在位数量：0，</span>
+      <span>错放数：0</span>
     </div>
     <div class="">
-      <WifiOutlined class="text-lg text-blue-500" :class="[isOnline ? 'text-blue-500' : '']" />
+      <WifiOutlined class="text-xl" :class="[isOnline ? 'text-white' : '']" />
     </div>
   </div>
 </template>

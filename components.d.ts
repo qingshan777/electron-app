@@ -15,13 +15,9 @@ declare module '@vue/runtime-core' {
     ATabPane: typeof import('ant-design-vue/es')['TabPane']
     ATabs: typeof import('ant-design-vue/es')['Tabs']
     CardAuth: typeof import('./src/components/CardAuth.vue')['default']
-    copy: typeof import('./src/components/TheCardAuth copy.vue')['default']
     DeviceStatus: typeof import('./src/components/DeviceStatus.vue')['default']
     PasswordAuth: typeof import('./src/components/PasswordAuth.vue')['default']
-    TheCardAuth: typeof import('./src/components/TheCardAuth.vue')['default']
     TheLogin: typeof import('./src/components/TheLogin.vue')['default']
     TheMain: typeof import('./src/components/TheMain.vue')['default']
-    ThePassword: typeof import('./src/components/ThePassword.vue')['default']
-    ThePasswordAuth: typeof import('./src/components/ThePasswordAuth.vue')['default']
   }
 }

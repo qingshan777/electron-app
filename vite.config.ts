@@ -12,6 +12,7 @@ import path from 'path'
 rmSync('dist-electron', { recursive: true, force: true })
 const sourcemap = !!process.env.VSCODE_DEBUG
 const isBuild = process.argv.slice(2).includes('build')
+const externalDependencies = ['serialport', 'ffi-napi']
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -40,7 +41,7 @@ export default defineConfig({
             minify: isBuild,
             outDir: 'dist-electron/main',
             rollupOptions: {
-              external: [...Object.keys(pkg.devDependencies), 'serialport']
+              external: [...Object.keys(pkg.devDependencies), ...externalDependencies]
             }
           },
           resolve: {
