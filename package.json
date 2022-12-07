@@ -50,6 +50,9 @@
     "electron-better-ipc": "^2.0.1",
     "ffi-napi": "^4.0.3",
     "internet-available": "^1.0.0",
+    "ref-array-napi": "^1.2.2",
+    "ref-napi": "^3.0.3",
+    "ref-struct-napi": "^1.1.1",
     "serialport": "^10.5.0"
   }
 }
