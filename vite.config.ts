@@ -12,7 +12,7 @@ import path from 'path'
 rmSync('dist-electron', { recursive: true, force: true })
 const sourcemap = !!process.env.VSCODE_DEBUG
 const isBuild = process.argv.slice(2).includes('build')
-const externalDependencies = ['serialport', 'ffi-napi', 'ref-array-napi', 'ref-napi']
+const externalDependencies = ['serialport', 'ffi-napi','ref-napi','ref-array-di','ref-struct-di']
 
 // https://vitejs.dev/config/
 export default defineConfig({
