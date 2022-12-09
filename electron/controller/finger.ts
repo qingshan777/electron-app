@@ -19,12 +19,9 @@ const TXUSBDeviceType = CStruct({
 const TXUSBDeviceArrayType = CArray(TXUSBDeviceType)
 const deviceList = new TXUSBDeviceArrayType(16)
 
-console.log(deviceList.ref(), 'ref')
-
 const SDK_PATH = resolve(__dirname, '../../lib/finger/linux/x86_64/libzkfpcap.so')
 const fingerSDK = ffi.Library(SDK_PATH, {
   sensorEnumDevices: ['int', [TXUSBDeviceArrayType, 'int']]
 })
 
-const result = fingerSDK.sensorEnumDevices(deviceList, 1)
-console.log(result, 'result')
+const result = fingerSDK.sensorEnumDevices(deviceList, 16)

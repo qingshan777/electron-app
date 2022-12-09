@@ -46,6 +46,7 @@
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
     "ant-design-vue": "^3.2.15",
+    "bytebuffer": "^5.0.1",
     "dayjs": "^1.11.6",
     "electron-better-ipc": "^2.0.1",
     "ffi-napi": "^4.0.3",

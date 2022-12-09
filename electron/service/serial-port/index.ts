@@ -1,19 +1,14 @@
-import { SerialPort } from 'serialport'
+import { stringToHex } from '#/utils'
+import SerialPort from '#/utils/serial-port'
 
-/**
- * @description: 查询串口设备列表
- * @return {*}
- */
-export const querySerialPortList = async () => {
-  return await SerialPort.list()
-}
-/**
- * @description: 创建串口并自动打开
- * @param {string} path 设备地址
- * @param {number} baudRate 比特率，默认 9600
- * @return {*}
- */
-export const openSerialPort = (path: string = '/dev/robot', baudRate = 9600) => {
-  const port = new SerialPort({ path, baudRate })
-  return port
-}
+const serialPort = new SerialPort()
+serialPort.addDataListener(data => {
+  console.log(data, 'port data')
+})
+
+const str = stringToHex('8a0101119a')
+// console.log(str,'str')
+const hexNum = [0x8a, 0x01, 0x01, 0x11, 0x9a]
+const data = Buffer.from(hexNum)
+console.log(data, 'data')
+serialPort.write(data)
