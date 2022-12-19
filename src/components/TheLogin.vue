@@ -20,9 +20,14 @@ import PasswordAuth from './PasswordAuth.vue'
 import CardAuth from './CardAuth.vue'
 import { PASSWORD_KEY, FINGER_KEY, CARD_KEY } from '@/config/auth'
 import { useStore } from '@/store'
+import useFinger from '@/hooks/useFinger'
+import useNetwork from '@/hooks/useNetwork'
 
 const { changeLoginVisible } = useStore()
 const activeKey = ref('1')
+
+useNetwork()
+useFinger()
 
 const closeLogin = () => {
   changeLoginVisible(false)

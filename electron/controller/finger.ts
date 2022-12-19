@@ -1,27 +1,11 @@
-import { resolve } from 'path'
-import ffi from 'ffi-napi'
-import * as ref from 'ref-napi'
-import ArrayType from 'ref-array-di'
-import StructType from 'ref-struct-di'
+import { ipcMain } from 'electron-better-ipc'
+import { queryDeviceOnline, openDevice } from '#/service/finger'
 
-const CArray = ArrayType(ref)
-const CStruct = StructType(ref)
+// 获取指纹设备是否在线
+// ipcMain.on('get-finger-status', async event => {
+//   const isOnline = queryDeviceOnline()
+//   event.sender.send('get-finger-status-response', isOnline)
+// })
 
-const TXUSBDeviceType = CStruct({
-  vid: ref.types.ushort,
-  pid: ref.types.ushort,
-  szSerialNumber: CArray(ref.types.char, 64),
-  bus_number: ref.types.uint32,
-  device_address: ref.types.uint32,
-  extraPtr: ref.types.uint
-})
-
-const TXUSBDeviceArrayType = CArray(TXUSBDeviceType)
-const deviceList = new TXUSBDeviceArrayType(16)
-
-const SDK_PATH = resolve(__dirname, '../../lib/finger/linux/x86_64/libzkfpcap.so')
-const fingerSDK = ffi.Library(SDK_PATH, {
-  sensorEnumDevices: ['int', [TXUSBDeviceArrayType, 'int']]
-})
-
-const result = fingerSDK.sensorEnumDevices(deviceList, 16)
+queryDeviceOnline()
+openDevice()
