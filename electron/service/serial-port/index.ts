@@ -1,14 +1,11 @@
 import { stringToHex } from '#/utils'
 import SerialPort from '#/utils/serial-port'
 
-const serialPort = new SerialPort()
+const serialPort = new SerialPort({ path: 'COM9' })
 serialPort.addDataListener(data => {
   console.log(data, 'port data')
 })
 
-const str = stringToHex('8a0101119a')
-// console.log(str,'str')
-const hexNum = [0x8a, 0x01, 0x01, 0x11, 0x9a]
-const data = Buffer.from(hexNum)
+const data = Buffer.from('80010033B2', 'hex')
 console.log(data, 'data')
 serialPort.write(data)

@@ -2,7 +2,10 @@
   <div class="p-4">
     <a-form :model="formState" name="basic" autocomplete="off">
       <a-form-item name="username">
-        <a-input ref="cardNumberInput" v-model:value="formState.username" size="large" readonly />
+        <div class="flex flex-col">
+          <img src="@/assets/images/login_card.png" alt="" class="h-[130px]" />
+          <a-input class="flex-1" ref="cardNumberInput" v-model:value="formState.username" size="large" readonly />
+        </div>
       </a-form-item>
     </a-form>
   </div>

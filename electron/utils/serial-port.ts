@@ -1,9 +1,10 @@
 import { SerialPort as SerialPortLib } from 'serialport'
+import { ByteLengthParser } from '@serialport/parser-byte-length'
 
 export default class SerialPort {
   private portInstance: null | SerialPortLib = null
 
-  constructor(path: string = '/dev/ttyUSB0', baudRate: number = 9600) {
+  constructor({ path, baudRate = 9600 }: { path: string; baudRate?: number }) {
     this.init(path, baudRate)
   }
 
@@ -26,11 +27,15 @@ export default class SerialPort {
   }
 
   // 添加数据返回的监听器
-  addDataListener(cb){
-    // this.portInstance.on('data',cb)
-    this.portInstance.on('data', function (data) {
-      console.log('Data:', data)
+  addDataListener(cb) {
+    const parser = this.portInstance.pipe(new ByteLengthParser({ length: 6 })) // 每收到6个字节触发
+    parser.on('data', data => {
+      console.log('Read Data:', data)
     })
+
+    // this.portInstance.on('readable', () => {
+    //   console.log('Data:', this.portInstance.read())
+    // })
   }
 
   // 关闭串口
